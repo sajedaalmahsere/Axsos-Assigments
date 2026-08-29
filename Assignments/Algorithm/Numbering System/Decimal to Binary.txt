@@ -1,0 +1,6 @@
+Convert the following Decimal numbers to their equivalent in Binary system:
+a.11001
+b.100101
+c.100011
+d.110010000
+e.1000100011

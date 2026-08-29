@@ -1,0 +1,11 @@
+Convert the following Binary numbers to Decimal:
+a. 12
+b. 53
+c. 219
+b. 105
+
+State whether the following statements are True or False:
+1. True
+2. True
+3. false
+4. True

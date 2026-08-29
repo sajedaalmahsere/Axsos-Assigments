@@ -1,0 +1,7 @@
+Convert the following numbers octal and hexadecimal bases to decimal:
+1. 58
+2. 114
+3. 2785
+4. 4609
+5. 2766
+6. 65552
