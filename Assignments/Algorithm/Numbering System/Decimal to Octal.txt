@@ -1,0 +1,5 @@
+Convert the following decimal numbers into octal:
+a. 31
+b. 144
+c. 177
+d. 2000
