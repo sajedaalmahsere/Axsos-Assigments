@@ -1,0 +1,11 @@
+Pseudo Code : Calculate the Average
+
+Number1 = 10
+Number2 = 20
+Number3 = 30
+
+Start
+INPUT 10,20,30
+AVERAGE (10+20+30)/3
+RETURN AVERAGE
+END
