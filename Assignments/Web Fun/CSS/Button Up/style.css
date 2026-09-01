@@ -1,0 +1,23 @@
+#Search{
+    border-color: #46b1b2;
+    border-radius: 50px;
+    width: 120px;
+    color: #46b1b2;
+    border: solid;
+    
+
+}
+
+#add{
+    border-radius: 50px;
+    background-color: #46b1b2;
+    border: #46b1b2 solid;
+    color: #dde3ea;
+}
+
+#CA{
+    border: 2px solid black;
+    box-shadow: 5px 5px #050303;;
+    background-color: #2b78e4;
+    color:#bfd7f7;
+}
