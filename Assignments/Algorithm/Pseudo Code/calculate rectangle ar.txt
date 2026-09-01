@@ -1,0 +1,8 @@
+Pseudo Code : calculate rectangle area
+
+START 
+INPUT Length
+INPUT Width
+Set Area = Length * Width
+Return Area 
+END
