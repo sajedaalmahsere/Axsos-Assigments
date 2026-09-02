@@ -1,0 +1,10 @@
+Factorial
+
+START 
+INPUT Factorial = n
+ IF n greater than 0
+  Then 
+   For i from (n-1) to 1 
+    Factorial = Factorial*(n-1)
+   END For
+RETURN Factorial
