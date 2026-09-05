@@ -1,0 +1,33 @@
+.row{
+    display: flex;
+    gap: 10px;
+    height: 100%;
+}
+
+.col{
+    background-color:#60a0a1 ;
+    height: 40px;
+    width: 100%;
+    text-align: center;
+    margin: 10px;
+    font-size: 30px;
+
+}
+
+.col-2{
+    background-color:#60a0a1 ;   
+    height: 40px;
+    width: 100%;
+    margin: 10px;
+    text-align: center;
+    font-size: 30px;
+}
+
+.col-3{
+    background-color:#60a0a1 ;
+    height: 40px;
+    width: 100%;
+    margin: 10px;
+    text-align: center; 
+    font-size: 30px;  
+}
