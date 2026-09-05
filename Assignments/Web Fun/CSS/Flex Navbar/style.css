@@ -1,8 +1,42 @@
+@import url('https://fonts.google.com/share?selection.family=Handlee|Roboto:ital,wght@0,100..900;1,100..900|Sriracha');
+
 .nav{
     background-color: #333333;
+    height: 100px; 
     display: flex;
+    justify-content: space-between;
+    
 }
 
 .nav-title{
-    text-
+    display: flex;
+    align-items: center;
+    margin: 30px;
+    font-family: "Sriracha", cursive;
+    color: white
 }
+
+.nav-links{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    list-style: none;
+}
+
+a{
+    font-size: 20px;
+    text-decoration: none;
+    color: white;
+    font-family: "Handlee", cursive;
+}
+
+.btn{
+    background-color: #17a2b8;
+    color: white;
+    font-family: "Handlee", cursive;
+    box-shadow: 5px 5px #050303;
+    border: 2px solid black;
+    margin-right: 20px;
+    
+}
+
