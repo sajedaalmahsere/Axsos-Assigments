@@ -1,0 +1,120 @@
+.main{
+    width: 40%;
+}
+
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #cccccc;
+    padding: 20px;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+}
+
+header input{
+    width: 400px;
+    height: 40px;
+    
+}
+
+header button{
+    height: 25px;
+    width: 50px;
+    background-color:#2a77e4 ;
+    color:#f4ffff ;
+    box-shadow: 4px 4px #000104;
+    border: 2px solid #000104;
+}
+
+.ninjas{
+    display: flex;
+    flex: 2;
+    flex-direction: column;
+    margin-top: 20px;
+    gap: 30px;
+}
+
+.ninja1{
+    
+    border: 4px solid #050505 ;
+    display: flex;
+    justify-content: flex-start;
+    
+}
+
+.margin-left{
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+
+.margin-left p{
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+button{
+    margin-top: 20px;
+    background-color: #ffd863;
+    box-shadow: 4px 4px #000104;
+    border: 2px solid #000104;
+    width: 70px;
+    height: 30px;
+}
+
+.ninja2{
+    display: flex;
+    border: 4px solid #050505 ;
+
+}
+
+.skills{
+    display: flex;
+    align-items: center;
+    margin: 20px;
+}
+
+
+h2{
+    margin-top: 0px;
+    font-size: 32px;
+    margin-bottom: 5px ;
+    
+}
+
+.Dojonary{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 29px;
+    flex: 1;
+    border: 4px solid #050505 ;
+    height: 120px;
+    margin-top: 20px;
+    margin-left: 20px;
+    padding: 20px;
+    
+}
+
+.Dojonary button{
+    background-color: #8fc67c;
+    width: 150px;
+    padding: 10px;
+    margin-bottom: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.boxes{
+    display: flex;
+    width: 100%;
+}
