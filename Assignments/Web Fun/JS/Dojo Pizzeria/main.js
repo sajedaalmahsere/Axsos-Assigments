@@ -8,16 +8,16 @@ function pizzaOven(crust,sauce,cheese,toppings){
 }
 
 var pizza1 = pizzaOven("deep dish", "traditional", "mozzarella", ["peperoni", "sausage"])
-console.log(pizza1);
+// console.log(pizza1);
 
 var pizza2 = pizzaOven("hand tossed", "marinara", ["mozzarella","fata"], ["mushrooms", "olives", "onions"])
-console.log(pizza2);
+// console.log(pizza2);
 
 var pizza3 = pizzaOven("thin", "BBQ", "mozzarella", "chicken");
-console.log(pizza3);
+// console.log(pizza3);
 
 var pizza4 = pizzaOven("stuffed", "tomato", "cheese", "olives");
-console.log(pizza4);
+console.log("My first pizza is",pizza4);
 
 
 
