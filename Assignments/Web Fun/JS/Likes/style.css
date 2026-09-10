@@ -6,6 +6,7 @@ body{
     display: flex;
     justify-content: center;
 }
+
 header{
     display: flex;
     align-items: center;
@@ -37,6 +38,9 @@ aside{
     align-items: center;
 }
 
+aside p{
+    font-size: 20px ;
+}
 aside img{
     display: flex;
     width: 100px;
