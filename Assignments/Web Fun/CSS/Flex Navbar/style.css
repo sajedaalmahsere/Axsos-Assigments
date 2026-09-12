@@ -2,9 +2,11 @@
 
 .nav{
     background-color: #333333;
-    height: 100px; 
+    width: 100%;
+    max-width: 1971px;
     display: flex;
     justify-content: space-between;
+    
     
 }
 
