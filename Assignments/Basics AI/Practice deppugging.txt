@@ -1,0 +1,23 @@
+First Error: 
+	Error Type: ReferenceError: getLearningPlan is not defined 
+	Full Error message: console.log(getLearningPlan(trainee));
+                                    ^
+	File Name: Practice Debugging\main.js
+	
+	Line Number: 21
+	My guess for the error: that we should define the function getLearningPlan olso we don't have the trainee object
+
+
+Second Error: 
+	Error Type: ReferenceError: getLearningPlan is not defined 
+	Full Error message: console.log(getLearningPlan(student));
+                                    ^
+	File Name: Practice Debugging\main.js
+	
+	Line Number: 24
+	My guess for the error: that we should define the function getLearningPlan
+
+
+I think we should define the function getLearningPlan or using the function on the lms 
+
+and on the second error we can change the function but trainee object doesn't defind so we can comment it
