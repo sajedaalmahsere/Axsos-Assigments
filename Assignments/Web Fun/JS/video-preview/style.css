@@ -62,6 +62,7 @@ body {
 .placeholder {
     margin-bottom: 20px;
     width: 100%;
+    display: flex;
 }
 
 .placeholder svg {
