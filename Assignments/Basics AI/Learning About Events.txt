@@ -1,0 +1,98 @@
+Role: You are my Full Stack instructor.
+Focus: Help me understand JavaScript events.
+Question: What does `event.target.value` mean in JavaScript? 
+Explain what `event` is, what `target` refers to, and what `value` represents. 
+
+Sure — let’s understand it step by step, without solving any exercise for you.
+
+### 1. What is `event`?
+
+`event` is an **object** that JavaScript gives to your event-handling function.
+
+It contains information about **what happened**.
+
+For example, if a user types something, the event contains information about that typing action.
+
+```js
+function handleInput(event) {
+    console.log(event);
+}
+```
+
+Here, `event` tells you information about the input event.
+
+---
+
+### 2. What is `event.target`?
+
+`target` means:
+
+> **The HTML element where the event happened.**
+
+For example, if the user types inside:
+
+```html
+<input>
+```
+
+then:
+
+```js
+event.target
+```
+
+refers to that `<input>` element.
+
+---
+
+### 3. What is `event.target.value`?
+
+`value` is the **current content/value of the input**.
+
+So imagine the user types:
+
+```text
+Hello
+```
+
+Then:
+
+```js
+event.target.value
+```
+
+would give you:
+
+```text
+"Hello"
+```
+
+### Simple example
+
+```html
+<input oninput="showValue(event)">
+```
+
+```js
+function showValue(event) {
+    console.log(event.target.value);
+}
+```
+
+If the user types `JavaScript`, the console will show:
+
+```text
+JavaScript
+```
+
+### 🧠 Easy way to remember
+
+Think of it like this:
+
+**`event`** → What happened?
+**`target`** → Where did it happen?
+**`value`** → What is inside that element?
+
+So:
+
+**`event.target.value` = the current value of the element where the event happened.**
