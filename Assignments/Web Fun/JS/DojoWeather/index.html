@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Dojo Weather</title>
+</head>
+<body>
+    <header>
+        <h1>DojoWeather</h1>
+        <ul>
+            <li onclick="show(this)">Burbank</li>
+            <li onclick="show(this)">Chicago</li>
+            <li onclick="show(this)">Dallas</li>
+        </ul>
+    </header>
+<div class="info">
+
+    <nav>
+        <p class="San">San Jose</p>
+        <div>
+            <label for="temperature">show temperature in</label>
+            <select id="temperature">
+                <option value="Celsius">°C</option>
+                <option value="Fahrenheit">°F</option>
+            </select>
+        </div>
+    </nav>
+    
+    <section>
+        <div class="Today">
+            <h3>Today</h3>
+            <img src="assets/some_rain.png" alt="rain">
+            <p>some rain</p>
+            <div>
+                <h4>24°</h4>
+                <h4>18°</h4>
+            </div>
+        </div>
+
+        <div class="Today">
+            <h3>Tomorrow</h3>
+            <img src="/assets/some_sun.png" alt="sun">
+            <p>some sun</p>
+            <div>
+                <h4>27°</h4>
+                <h4>19°</h4>
+            </div>
+        </div>
+
+        <div class="Today">
+            <h3>Friday</h3>
+            <img src="assets/some_clouds.png" alt="clouds">
+            <p>some clouds</p>
+            <div>
+                <h4>21°</h4>
+                <h4>16°</h4>
+            </div>
+        </div>
+
+        <div class="Today">
+            <h3>Saturday</h3>
+            <img src="/assets/some_sun.png" alt="sun">
+            <p>some sun</p>
+            <div>
+                <h4>26°</h4>
+                <h4>21°</h4>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+            <img src="/assets/cookie.png" alt="cookie">
+            <div>
+            <span>Stop! Cookie time</span>
+            <p>We use cookies (sadly not the edible ones)to personalize 
+                content and ads, to provide social media features
+                and to analyse our traffic. <a href="more">Read more...</a></p>
+            </div>
+            <button onclick="hide()">I Accept</button>
+        </footer>
+    
+</div>
+    <script src="main.js"></script>
+</body>
+</html>
