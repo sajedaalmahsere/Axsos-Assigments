@@ -6,3 +6,7 @@ function hide() {
     var foot = document.querySelector("footer")
     foot.remove();
 }
+
+function convert(){
+    var t= document.querySelector("#temperature")
+}

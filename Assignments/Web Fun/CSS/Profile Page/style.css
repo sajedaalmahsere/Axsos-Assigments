@@ -102,7 +102,7 @@ li{
 }
 
 .box2{
-     margin-top: 50px;
+    margin-top: 50px;
     justify-content: center;
     width: 300px;
     height: 200px;
@@ -129,7 +129,7 @@ li{
     align-items: center;
 }
 
-.bashar2 {
+.adrien {
     height: 40px;
     display: flex;
     position: relative;
@@ -137,7 +137,8 @@ li{
     left: 10px;
     border-radius: 100%;
 }
-.bashar3 {
+
+.anne {
     height: 40px;
     display: flex;
     position: relative;
