@@ -7,6 +7,7 @@
 }
 
 .col{
+    flex: 1;
     background-color:#60a0a1 ;
     height: 40px;
     width: 100%;
@@ -19,10 +20,11 @@
     display: flex;
     gap: 10px;
     height: 100%;
-    flex: 1;
+    
 }
 
 .col-2{
+    flex: 2;
     background-color:#60a0a1 ;   
     height: 40px;
     width: 100%;
@@ -39,6 +41,7 @@
 }
 
 .col-3{
+    flex: 3;
     background-color:#60a0a1 ;
     height: 40px;
     width: 100%;
