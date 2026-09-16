@@ -34,7 +34,7 @@ nav{
     align-items: center;
     font-family: 'Handlee',cursive;
     border-bottom: 2px solid black;
-    width: 42%;
+    width: 55%;
 }
 
 .San{
@@ -109,5 +109,12 @@ button {
     border: 3px solid black;
 }
 
+.low{
+    color: red;
+}
+
+.high{
+    color: blue;
+}
 
 

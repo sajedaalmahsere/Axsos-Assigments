@@ -21,7 +21,7 @@
         <p class="San">San Jose</p>
         <div>
             <label for="temperature">show temperature in</label>
-            <select id="temperature" onchange="convert()">
+            <select id="temperature" onchange="convertTemp()">
                 <option value="Celsius">°C</option>
                 <option value="Fahrenheit">°F</option>
             </select>
@@ -34,8 +34,8 @@
             <img src="assets/some_rain.png" alt="rain">
             <p>some rain</p>
             <div id="card1">
-                <h4>24°</h4>
-                <h4>18°</h4>
+                <h4 class="low">24°</h4>
+                <h4 class="high">18°</h4>
             </div>
         </div>
 
@@ -44,8 +44,8 @@
             <img src="/assets/some_sun.png" alt="sun">
             <p>some sun</p>
             <div id="card2">
-                <h4>27°</h4>
-                <h4>19°</h4>
+                <h4 class="low">27°</h4>
+                <h4 class="high">19°</h4>
             </div>
         </div>
 
@@ -54,8 +54,8 @@
             <img src="assets/some_clouds.png" alt="clouds">
             <p>some clouds</p>
             <div id="card3">
-                <h4>21°</h4>
-                <h4>16°</h4>
+                <h4 class="low">21°</h4>
+                <h4 class="high">16°</h4>
             </div>
         </div>
 
@@ -64,8 +64,8 @@
             <img src="/assets/some_sun.png" alt="sun">
             <p>some sun</p>
             <div id="card4">
-                <h4>26°</h4>
-                <h4>21°</h4>
+                <h4 class="low">26°</h4>
+                <h4 class="high">21°</h4>
             </div>
         </div>
     </section>
