@@ -17,16 +17,99 @@
             <button>Sign Out</button>
         </ul>
     </header>
-
+<div class="boxes">
     <section>
-        <div>
-            <img src="/assets/user-circle.png" alt="jane">
-            <div>
-                <img src="/assets/map-marker.png" alt="map-marker">
-                <p>Seatle</p>
+        <div class="user-card">
+            <div class="user-cardblue">
+                <img src="/assets/user-circle.png" alt="jane" width="60px" class="jane">
+                <h2 id="ch-name">Jane Dou</h2>
+                <div class="location">
+                    <img src="/assets/map-marker.png" alt="map-marker" height="20px">
+                    <p>Seatle</p>
+                </div>
+                <p>Developer|Engineer|Problem Solver</p>
+                <p>Master of shadows and the internet!</p>
+                <div>
+                    <img src="/assets/gear.png" alt="gear" width="20px">
+                    <a href="#" onclick="userName()">edit profile</a>
+                </div>
+            </div>
+        </div>
+        <div class="education">
+            <div class="education-grey">
+                <h2>Education</h2>
+                <p>Coding Dojo - Full Stack Bootcamp</p>
+                <p class="date">Dec 2019-Mar 2020</p>
+                <p>Triple black belt in Python, MERN, and C#...</p>
+            </div>
+        </div>
+    </section>
+    <aside>
+        <div class="connection-request">
+            <div class="connection-requestgrey">
+                <div class="label">
+                    <button>2</button>
+                    <h2>Connection Request</h2>
+                </div>
+                <div id="person">
+
+                    <div class="todd">
+                        <img src="/assets/user-circle.png" alt="user" width="50px">
+                        <p>Todd E</p>
+                        <div onclick="remove()">
+                            <img src="/assets/accept-circle.png" alt="accept" width="50px">
+                            <img src="/assets/close-circle.png" alt="close" width="50px">
+                        </div>
+                    </div>
+                    <div class="Phil">
+                        <img src="/assets/user-circle.png" alt="user" width="50px">
+                        <p>Phil K</p>
+                        <div onclick="remove()">
+                            <img src="/assets/accept-circle.png" alt="accept" width="50px">
+                            <img src="/assets/close-circle.png" alt="close" width="50px">
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
-    </section>
+        <div class="your-connections">
+            <div class="your-connectionsgrey">
+                <div class="label">
+                    <button>418</button>
+                    <h2>Your Connections</h2>
+                </div>
+            <div class="persons">
+                <div class="person">
+                    <img src="/assets/user-circle.png" alt="user" width="50px">
+                    <p>Adrien D</p>
+                </div>
+                
+                <div class="person">
+                    <img src="/assets/user-circle.png" alt="user" width="50px">
+                    <p>Anne J</p>
+                </div>
+                
+                <div class="person">
+                    <img src="/assets/user-circle.png" alt="user" width="50px">
+                    <p>Aayne T</p>
+                </div>
+                
+                <div class="person">
+                    <img src="/assets/user-circle.png" alt="user" width="50px">
+                    <p>Arry Y</p>
+                </div>
+
+                <div class="more">
+                    <a href="#">View More</a>
+                </div>
+            </div>
+            </div>
+
+        </div>
+    </aside>
+</div>
+
+<script src="main.js"></script>
 </body>
 </html>
