@@ -1,0 +1,135 @@
+@import url('https://fonts.google.com/share?selection.family=Handlee|Roboto:ital,wght@0,100..900;1,100..900|Sriracha');
+*{
+    font-family: "Sriracha", cursive;
+}
+
+li{
+    list-style: none;
+}
+
+header{
+    display: flex;
+    justify-content: space-between;
+    background-color: #ffffff;
+    border: 2px solid #1c1c1c;
+    padding: 10px;
+    font-size: 23px;
+}
+.comp-name{
+    /* display: flex; */
+    flex-direction: column;
+    line-height: 0px;
+    width: 239px;
+}
+
+header div{
+    display: flex;
+}
+
+ul{
+    display: flex;
+    gap: 44px;
+}
+
+p span{
+    color: #72a5ec;
+}
+
+ul li:first-child{
+    color: #72a5ec;
+}
+
+.blue-btn{
+    padding:0px 10px;
+    background-color: #2a78e4;
+    color:#e7effb ;
+    font-size: 23px;
+    border: 2px solid #0c0d10;
+    box-shadow: 5px 5px #000000;
+}
+
+nav{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color:#b7d4f9 ;
+    border: 2px solid #0c0d10;
+    height: 300px;
+    margin-top: 10px;
+}
+
+nav div{
+    width: 230px;
+}
+
+nav div p{
+    font-size: 27px;
+}
+
+nav img{
+    width: 466px;
+}
+
+.services{
+    color: #357de5;
+    padding-left: 51px;
+    font-size: 27px;
+}
+
+.interior-washing{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    border:2px solid #0c0d10 ;
+    width: 260px;
+    padding: 20px;
+}
+
+.interior-washing img{
+    width: 112px;
+}
+
+.cards1{
+    display: flex;
+    justify-content: space-evenly;
+    gap: 20px;
+}
+
+.available{
+    display:flex;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 88px;
+}
+
+section{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    border:2px solid #0c0d10 ;
+    background-color:#b7d4f9 ;
+    margin: 0px 49px 100px;
+}
+
+.client button{
+    position: relative;
+    left: 587px;
+}
+footer{
+    display: flex;
+    justify-content: space-between;
+    border:2px solid #0c0d10 ;
+    background-color: #b7d4f9;
+}
+.iconswidth{
+    width: 30px;
+}
+
+.applications{
+    display: flex;
+    gap: 20px;
+}
+
+#number{
+    color: #000000;
+}

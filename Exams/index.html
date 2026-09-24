@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <div>
+            <img src="./assets/logo.png" alt="logo">
+            <div class="comp-name">
+                <h2>AL-AMeer</h2>
+                <p>we care your <span>Car</span></p>
+            </div>
+        </div>
+            <ul>
+                <li>Home</li>
+                <li>Service</li>
+                <li>Gallery</li>
+                <li>Contact Us</li>
+                <li><button class="blue-btn">Sign in</button></li>
+            </ul>
+    </header>
+    <nav>
+        <div>
+            <p>Best Car services in the town</p>
+            <button id="showMore" class="blue-btn" onclick="hide(this)">Show more</button>
+        </div>
+        <img onclick="changeImg()" class="bluesuper-car" src="./assets/bluecar.png" alt="bluecar">
+    </nav>
+    <p class="services">Our Services</p>
+    <main>
+        <div class="cards1">
+            <div class="interior-washing">
+                <img src="./assets/icons/InteriorWashing.png" alt="InteriorWashing">
+                <div>
+                    <p>Interior Washing</p>
+                    <button onclick="decrease('#number')" class="blue-btn">Book Now</button>
+                </div>
+            </div>
+            <div class="interior-washing">
+                <img src="./assets/icons/SeatsWashing.png" alt="SeatsWashing">
+                <div>
+                    <p>Seats Washing</p>
+                    <button onclick="decrease('#number1')" class="blue-btn">Book Now</button>
+                </div>
+            </div>
+            <div class="interior-washing">
+                <img src="./assets/icons/OilChanging.png" alt="OilChanging">
+                <div>
+                    <p>Oil Changing</p>
+                    <button onclick="decrease('#number2')" class="blue-btn">Book Now</button>
+                </div>
+            </div>
+        </div>
+        <div class="available">
+            <p><span id="number">3</span> Appoinment Available</p>
+            <p><span id="number1">3</span> Appoinment Available</p>
+            <p><span id="number2">3</span> Appoinment Available</p>
+        </div>
+        <div class="cards1">
+            <div class="interior-washing">
+                <img src="./assets/icons/VacuumCleaning.png" alt="VacuumCleaning">
+                <div>
+                    <p>Vacuum Cleaning</p>
+                    <button class="blue-btn">Book Now</button>
+                </div>
+            </div>
+            <div class="interior-washing">
+                <img src="./assets/icons/ExteriorWashing.png" alt="ExteriorWashing">
+                <div>
+                    <p>ExteriorWashing</p>
+                    <button class="blue-btn">Book Now</button>
+                </div>
+            </div>
+            <div class="interior-washing">
+                <img src="./assets/icons/BrakeReparing .png" alt="BrakeReparing">
+                <div>
+                    <p>Brake Reparing</p>
+                    <button class="blue-btn">Book Now</button>
+                </div>
+            </div>
+        </div>
+        <div class="available">
+            <p><span id="number3">3</span> Appoinment Available</p>
+            <p><span id="number4">3</span> Appoinment Available</p>
+            <p><span id="number5">3</span> Appoinment Available</p>
+        </div>
+    </main>
+    <p class="services">What our clients say</p>
+    <section>
+        <img src="./assets/client.png" alt="client">
+        <div class="client">
+            <p id="text">My Experience at the  car wash was disappointing. The cleaning was
+                superficial, and some spots remaind on the car even after the 
+                wash. The staff were not friendly and seemed uninterested 
+                in providing good service. Addionally, the prices were high compared
+                to the quality of service I received. I don't think I'll be 
+                coming back or recommending this car wash to others.</p>
+            <button class="blue-btn" onclick="changeText()">Read more</button>
+        </div>
+    </section>
+    <footer>
+        <p>Axsos Academy</p>
+        <div class="applications">
+            <img src="./assets/icons/watsappicon.png" alt="Watsapp" class="iconswidth">
+            <img src="./assets/icons/linkedinicon.png" alt="Linkedin" class="iconswidth">
+            <img src="./assets/icons/mailicon.png" alt="Mail" class="iconswidth">
+            <img src="./assets/icons/instagramicon.png" alt="Instagram" class="iconswidth">
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+</html>
