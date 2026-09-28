@@ -16,7 +16,7 @@ def count_positives(positive):
             count += 1
         else:
             continue
-    positive[len(positive) - 1] = count
+    positive[-1] = count
     return positive
 # print(count_positives(positive=[-5,9,7,8,7,-3]))
 
@@ -43,11 +43,12 @@ def average(avg):
 # ---------------------------------------------------------------------------
 
 def length(index):
-    sum = 0
+    # sum = 0
     for i in range(len(index)):
-        sum = 1 + i
+        # sum = 1 + i
+        sum = len(index)
     return sum
-# print(length([]))
+# print(length([1,3,4,5,6]))
 
 # -----------------------------------------------------------------------------
 
@@ -96,7 +97,7 @@ def ultimate_analysis(numbers):
     print("minimum:", minimum)
     print("maximum:", maximum)
     print("length:", length)
-# ultimate_analysis([37, 2, 1, -9])
+ultimate_analysis([37, 2, 1, -9])
 
 # --------------------------------------------------------------------------
 
@@ -111,5 +112,5 @@ def reverse_list(list):
         left += 1
         right -=1
     return list
-print(reverse_list([1,2,3,4,5]))
-        
+# print(reverse_list([1,2,3,4,5]))
+
