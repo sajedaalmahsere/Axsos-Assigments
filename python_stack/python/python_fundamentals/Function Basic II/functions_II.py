@@ -22,13 +22,17 @@ print(plus([1,2,3,4]))
 
 # ------------------------------------------------------------
 
-def greater(list):
-    for i in range(len(list)):
-        if(i>list[i]):
-            return list[i]
-        else:
-            return False
-        
+def values_greater_than_second(numbers):
+    if len(numbers) < 2:
+        return False
+    second_value = numbers[1]
+    new = []
+    for x in numbers:
+        if x > second_value:
+            new.append(x)
+    print(len(new))
+    return new
+print(new)
 # ---------------------------------------------------------------
 
 def length_and_value(size, value):
