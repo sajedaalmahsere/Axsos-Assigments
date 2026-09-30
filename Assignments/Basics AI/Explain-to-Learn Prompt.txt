@@ -1,0 +1,110 @@
+1. Weak Prompt
+Explain Python functions.
+
+2. AI Response to the Weak Prompt
+A function in Python is a reusable block of code that performs a specific task.
+
+You define a function using the `def` keyword. For example:
+
+```python
+def greet():
+    print("Hello!")
+
+greet()
+```
+
+Functions can also accept parameters and return values:
+
+```python
+def add(a, b):
+    return a + b
+
+result = add(3, 5)
+print(result)
+```
+
+Functions are useful because they allow you to organize your code, avoid repetition, and reuse code.
+
+3. Improved Explain-to-Learn Prompt
+You are a beginner-friendly Python instructor And
+I am a beginner Python student. I understand variables, conditionals, loops, and basic lists. I am currently learning Python functions.
+Explain Python functions, especially parameters and return values.
+
+Please include:
+
+* A small Python example.
+* A simple real-life analogy.
+* One common mistake beginners make when using functions.
+* One practice question that I can solve myself.
+
+Format:
+Use simple English and short sections. Do not provide the answer to the practice question.
+
+4. AI Response to the Improved Prompt
+
+### What is a Function?
+
+A function is a reusable block of code that performs a specific task.
+
+Think of a function like a **machine**. You give the machine something, it does a job, and it can give you something back.
+
+### Parameters
+
+Parameters are the values that a function expects to receive.
+
+For example:
+
+```python
+def greet(name):
+    print("Hello", name)
+```
+
+Here, `name` is a parameter.
+
+When we call the function:
+
+```python
+greet("Sajeda")
+```
+
+The value `"Sajeda"` is passed to the parameter `name`.
+
+### Return
+
+`return` sends a value back from the function.
+
+```python
+def add(a, b):
+    return a + b
+
+result = add(3, 5)
+print(result)
+```
+
+The function calculates `3 + 5` and returns `8`.
+
+### Analogy
+
+Imagine a coffee machine.
+
+* You give it coffee beans and water → parameters.
+* The machine makes coffee → function does its job.
+* The coffee comes out → return value.
+
+### Common Mistake
+
+A common beginner mistake is confusing `print()` with `return`.
+
+`print()` displays something on the screen, while `return` sends a value back so it can be used elsewhere in the program.
+
+### Practice Question
+
+Create a function called `multiply` that accepts two numbers as parameters and returns their multiplication.
+
+What should `multiply(4, 5)` return?
+
+Do not look for the answer yet. Try solving it yourself.
+
+6. Reflection
+The improved prompt helped me learn more than the weak prompt. The weak prompt gave me a general definition of Python functions, but it did not focus on my level of knowledge.
+
