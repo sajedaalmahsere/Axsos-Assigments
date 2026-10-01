@@ -1,0 +1,36 @@
+Run the starter code:
+Error: line 43, in <module>
+    hero1.collect(50).buy_item(15).gift_coins(hero2, 20)
+Error: line 27, in collect
+    self.coins += amount
+    ^^^^^^^^^^
+AttributeError: 'Hero' object has no attribute 'coins'
+
+--> the Hero class does not have the attribute coins but Backpack does
+so the solution is to add .backpack (self.backpack.coins += amount)
+
+1. Weak Prompt:
+Was the answer clear? Yes, the answer was clear and showed the corrected code.
+Did it explain the OOP problem? It explained some problems, but the main OOP issue was not deeply explained.
+Did it help you learn, or did it mostly give you code? It mostly gave me the code, so it was not as helpful for learning.
+
+2- Compare the Answers
+1. Which prompt gave a better explanation?
+The improved prompt gave a better explanation because it clearly asked the AI to identify the OOP concepts and explain the root cause.
+
+2. Which prompt helped you understand OOP better?
+The improved prompt helped me understand OOP better because it explained the relationship between Hero and Backpack, and why the coins should belong to the Backpack.
+
+3. What extra context made the improved prompt stronger?
+The improved prompt included my learning level, the OOP topics I studied, the exact task, and the required answer format. This made the AI focus on explaining instead of only giving me a solution.
+
+3. Fix One Issue Manually
+self.coins += amount
+
+The problem is that Hero does not have a coins attribute.
+Hero has a backpack, and the Backpack has the coins attribute:
+
+def collect(self, amount):
+    # Fixed: Hero does not have a coins attribute, so we add coins to the associated Backpack.
+    self.backpack.add_coins(amount)
+    return self
