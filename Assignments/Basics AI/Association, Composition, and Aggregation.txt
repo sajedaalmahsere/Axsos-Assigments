@@ -1,0 +1,551 @@
+RCFT Prompt
+
+Role:
+Act as a beginner-friendly Python and Object-Oriented Programming instructor.
+
+Context:
+I am a beginner Python student. I understand the basics of Python classes and objects, and I have recently learned about Inheritance and Association in Object-Oriented Programming.
+
+I understand that:
+
+* Inheritance creates an “is-a” relationship. For example, a Dog is an Animal.
+* Association creates a “has-a” relationship. For example, a User has a BankAccount.
+
+My programming skills are at a beginner level. I can create classes, constructors, attributes, methods, and objects in Python. I am still learning how different OOP relationships work and how to recognize them in real code.
+
+Task:
+Teach me the two new “has-a” relationships: Composition and Aggregation.
+
+Explain:
+
+1. What Composition means.
+2. What Aggregation means.
+3. The difference between Composition and Aggregation.
+4. How both are different from Association.
+5. How to identify each relationship in Python code.
+6. Give simple Python examples for each one.
+7. Explain the examples step by step.
+8. Use a simple real-world analogy to help me understand the differences.
+
+Please focus on helping me understand the concepts, not just giving me code.
+
+Format:
+Organize the explanation with clear headings:
+
+* Association
+* Composition
+* Aggregation
+* Composition vs. Aggregation
+* Association vs. Composition vs. Aggregation
+* Simple Python Examples
+* How to Recognize Each Relationship
+
+Use beginner-friendly English and keep the Python examples simple. Do not assume I already understand advanced OOP concepts.
+
+
+
+# OOP Relationships: Association, Composition, and Aggregation
+
+A good way to understand these three relationships is to focus on **how objects are connected** and, especially, **what happens to one object when the other object is removed**.
+
+---
+
+## 1. Association
+
+Association is the most general relationship.
+
+It means:
+
+> **One object uses or knows about another object.**
+
+It is often described as a **“has-a” relationship**, but the connection is relatively loose.
+
+### Real-world example
+
+A `User` has a `BankAccount`.
+
+The user can use the bank account, but the `BankAccount` can exist independently.
+
+For example:
+
+```python
+class BankAccount:
+    def __init__(self, balance):
+        self.balance = balance
+
+
+class User:
+    def __init__(self, name, account):
+        self.name = name
+        self.account = account
+```
+
+We can create them separately:
+
+```python
+account = BankAccount(1000)
+user = User("Sajeda", account)
+```
+
+Here:
+
+* `BankAccount` exists independently.
+* `User` exists independently.
+* `User` simply has a reference to a `BankAccount`.
+
+So this is **Association**.
+
+### Think:
+
+> “These two objects are connected, but they can live independently.”
+
+---
+
+# 2. Composition
+
+Composition is a **stronger “has-a” relationship**.
+
+In Composition:
+
+> One object **owns** another object.
+
+The contained object is strongly connected to the object that contains it.
+
+A common way to understand it is:
+
+> **If the owner disappears, the contained object should also disappear.**
+
+### Real-world analogy
+
+Think about a **House and Rooms**.
+
+A house has rooms.
+
+```text
+House
+ ├── Room
+ ├── Room
+ └── Room
+```
+
+The rooms are considered parts of the house.
+
+In a simple OOP design, the `House` can create its own `Room` objects:
+
+```python
+class Room:
+    def __init__(self, name):
+        self.name = name
+
+
+class House:
+    def __init__(self):
+        self.room = Room("Bedroom")
+```
+
+Notice something important:
+
+```python
+self.room = Room("Bedroom")
+```
+
+The `House` creates the `Room`.
+
+The `Room` is a part of the `House`.
+
+### The important idea
+
+```text
+House → Room
+```
+
+The `Room` belongs strongly to the `House`.
+
+If the `House` object is removed, its room is no longer meaningful as a part of that house.
+
+That's the main idea behind **Composition**.
+
+---
+
+# 3. Aggregation
+
+Aggregation is also a **“has-a” relationship**, but it is weaker than Composition.
+
+In Aggregation:
+
+> One object contains or uses another object, but the contained object can exist independently.
+
+### Real-world analogy
+
+Think about a **University and Students**.
+
+```text
+University
+ ├── Student
+ ├── Student
+ └── Student
+```
+
+The university has students.
+
+But if the university closes, the students don't disappear.
+
+They can still exist and attend another university.
+
+So:
+
+```text
+University → Student
+```
+
+is a good example of **Aggregation**.
+
+### Python example
+
+```python
+class Student:
+    def __init__(self, name):
+        self.name = name
+
+
+class University:
+    def __init__(self, student):
+        self.student = student
+```
+
+We create the student **outside** the university:
+
+```python
+student = Student("Sajeda")
+
+university = University(student)
+```
+
+The `Student` already exists before the `University` receives it.
+
+That is an important clue that this is **Aggregation**.
+
+---
+
+# 4. Composition vs. Aggregation
+
+This is the most important difference.
+
+| Composition                            | Aggregation                         |
+| -------------------------------------- | ----------------------------------- |
+| Strong relationship                    | Weaker relationship                 |
+| Represents ownership                   | Represents a loose relationship     |
+| Object is usually created by the owner | Object can be created independently |
+| Part depends strongly on the whole     | Part can exist without the whole    |
+| Example: House → Room                  | Example: University → Student       |
+
+### Easy way to remember
+
+**Composition:**
+
+> “You are a part of me.”
+
+**Aggregation:**
+
+> “You are connected to me, but you can exist without me.”
+
+---
+
+# 5. Association vs. Composition vs. Aggregation
+
+All three describe relationships between objects, but the strength of the relationship is different.
+
+Think of them like this:
+
+```text
+Association
+    ↓
+Loose connection
+
+Aggregation
+    ↓
+Has-a + weak ownership
+
+Composition
+    ↓
+Has-a + strong ownership
+```
+
+### Association
+
+> “I know/use you.”
+
+Example:
+
+```text
+User → BankAccount
+```
+
+The objects can exist independently.
+
+---
+
+### Aggregation
+
+> “I have you, but you can exist without me.”
+
+Example:
+
+```text
+University → Student
+```
+
+The student can exist without that university.
+
+---
+
+### Composition
+
+> “You are a part of me.”
+
+Example:
+
+```text
+House → Room
+```
+
+The room is strongly associated with that particular house.
+
+---
+
+# 6. Simple Python Examples
+
+Let's put all three next to each other.
+
+## Association
+
+```python
+class BankAccount:
+    def __init__(self, balance):
+        self.balance = balance
+
+
+class User:
+    def __init__(self, account):
+        self.account = account
+```
+
+Objects are created separately:
+
+```python
+account = BankAccount(1000)
+user = User(account)
+```
+
+The `User` simply has a reference to the account.
+
+**Association = objects are connected.**
+
+---
+
+## Composition
+
+```python
+class Room:
+    def __init__(self, name):
+        self.name = name
+
+
+class House:
+    def __init__(self):
+        self.room = Room("Bedroom")
+```
+
+Here:
+
+```python
+house = House()
+```
+
+The `House` creates its own `Room`.
+
+Notice:
+
+```python
+self.room = Room("Bedroom")
+```
+
+The `Room` is created **inside** the `House`.
+
+**Composition = strong ownership.**
+
+---
+
+## Aggregation
+
+```python
+class Student:
+    def __init__(self, name):
+        self.name = name
+
+
+class University:
+    def __init__(self, student):
+        self.student = student
+```
+
+Now:
+
+```python
+student = Student("Sajeda")
+university = University(student)
+```
+
+The `Student` is created separately and then given to the `University`.
+
+**Aggregation = weak ownership / independent objects.**
+
+---
+
+# 7. How to Recognize Each Relationship
+
+When you see Python code, ask yourself these questions.
+
+### Question 1: Are the classes simply connected?
+
+For example:
+
+```python
+class User:
+    def __init__(self, account):
+        self.account = account
+```
+
+Ask:
+
+> Does the `User` simply use or know about the `BankAccount`?
+
+If yes → **Association**
+
+---
+
+### Question 2: Does one object create the other?
+
+Look for something like:
+
+```python
+self.room = Room()
+```
+
+The `House` is creating the `Room`.
+
+Ask:
+
+> Is the second object strongly owned by the first object?
+
+If yes → **Composition**
+
+---
+
+### Question 3: Is the object created somewhere else?
+
+For example:
+
+```python
+student = Student("Sajeda")
+
+university = University(student)
+```
+
+The `Student` already exists independently.
+
+Ask:
+
+> Can the `Student` exist without this `University`?
+
+Yes → **Aggregation**
+
+---
+
+# 🧠 One Simple Analogy
+
+Imagine you are organizing a university.
+
+### Association
+
+You **know a teacher**.
+
+```text
+You ───── Teacher
+```
+
+You are connected to the teacher, but neither owns the other.
+
+**Association**
+
+---
+
+### Aggregation
+
+A **University has Students**.
+
+```text
+University
+   │
+   ├── Student
+   ├── Student
+   └── Student
+```
+
+If the university disappears, the students still exist.
+
+**Aggregation**
+
+---
+
+### Composition
+
+A **House has Rooms**.
+
+```text
+House
+   │
+   ├── Room
+   ├── Room
+   └── Room
+```
+
+The rooms are considered parts of that particular house.
+
+**Composition**
+
+---
+
+# ⭐ The easiest way to remember
+
+Don't try to memorize complicated definitions. Ask:
+
+> **“Can the other object exist independently?”**
+
+### If they simply interact:
+
+**Association**
+
+```text
+A ↔ B
+```
+
+### If B can exist independently:
+
+**Aggregation**
+
+```text
+A ──→ B
+```
+
+### If B strongly belongs to A:
+
+**Composition**
+
+```text
+A ◆──→ B
+```
+
+The diamond `◆` is commonly used in UML diagrams to represent **Composition**.
+
+One final important point: **the exact classification can depend on the design and meaning of the classes**, not merely on whether you see `self.x = SomeClass()` or a constructor parameter. The key is understanding the intended **lifetime and ownership relationship** between the objects.

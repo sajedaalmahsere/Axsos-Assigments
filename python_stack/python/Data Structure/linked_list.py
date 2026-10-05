@@ -25,5 +25,6 @@ class LinkedList:
             return self
         current =  self.head
         while current.next != None:
-            current.next = new_node
-            
+            current = current.next
+        current.next = new_node
+        return self
