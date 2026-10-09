@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static' , filename = 'css/style.css')}}">
+    <title>Document</title>
+</head>
+<body>
+<div class="board">
+    {% for rows in range(x) %}
+    <div class="row">
+        {% for columns in range(8) %}
+        {% if (rows + columns) % 2 == 0 %}
+        <div class="square black"></div>
+        {% else %}
+        <div class="square red"></div>
+        {% endif %}
+        {% endfor %}
+    </div>
+    {% endfor %}
+</div>
+</body>
+</html>

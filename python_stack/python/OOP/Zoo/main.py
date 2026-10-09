@@ -42,6 +42,8 @@ class Animal:
         self.health += 10
         self.happiness += 10
 
+zoo2 = Animal("Sajeda",12,10,5)
+zoo2.display_info()
 
 class Lion(Animal):
     def __init__(self, name, age, health_level = 100, happiness_level = 100):

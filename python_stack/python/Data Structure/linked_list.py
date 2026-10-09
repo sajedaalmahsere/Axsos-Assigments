@@ -28,3 +28,5 @@ class LinkedList:
             current = current.next
         current.next = new_node
         return self
+
+    

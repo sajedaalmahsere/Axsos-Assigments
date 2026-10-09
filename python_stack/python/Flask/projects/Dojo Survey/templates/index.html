@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static',filename ='style.css')}}">
+    <title>Document</title>
+</head>
+<body>
+    <form action="/register" method="post">
+        <div>
+        <label for="name":>Your Name: </label>
+        <input type="text" name="name" id="name">
+        </div>
+
+        <br>
+
+        <div>
+        <label for="email":>Email: </label>
+        <input type="email" name="email" id="email">
+        </div>
+
+        <br>
+
+        <div>
+            <label for="">Dojo Location: </label>
+            <select id="dojolocation">
+                <option value="Ramallah">Ramallah</option>
+                <option value="Alquds">Jerusalem</option>
+                <option value="Nablus">Nablus</option>
+            </select>
+        </div>
+        <br>
+        <div>
+            <label for="">Favorite Language: </label>
+            <select id="favoritelanguage">
+                <option value="Python">Python</option>
+                <option value="JS">JavaScript</option>
+                <option value="Java">Java</option>
+            </select>
+        </div>
+        <br>
+        <input type="submit" name="submit">
+    </form>
+</body>
+</html>
