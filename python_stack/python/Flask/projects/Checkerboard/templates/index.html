@@ -8,13 +8,13 @@
 </head>
 <body>
 <div class="board">
-    {% for rows in range(x) %}
+    {% for i in range(columns) %}
     <div class="row">
-        {% for columns in range(8) %}
-        {% if (rows + columns) % 2 == 0 %}
-        <div class="square black"></div>
+        {% for j in range(rows) %}
+        {% if (i + j) % 2 == 0 %}
+        <div class="square {{color}}"></div>
         {% else %}
-        <div class="square red"></div>
+        <div class="square {{color2}}"></div>
         {% endif %}
         {% endfor %}
     </div>

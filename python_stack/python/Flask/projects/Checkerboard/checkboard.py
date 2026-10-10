@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def check():
-    return render_template("index.html", rows=8, columns=8)
+    return render_template("index.html", rows=int(8), columns=int(8))
 
 
 @app.route('/<x>')
