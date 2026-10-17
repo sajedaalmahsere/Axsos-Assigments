@@ -1,0 +1,88 @@
+# Assignment: Test Generation for the `is_even()` Function
+
+## 1. Explanation of the Function
+
+The purpose of the `is_even(num)` function is to check whether a number is even. It returns `True` if the number is divisible by 2 without a remainder, and `False` otherwise.
+
+The provided function contains a syntax error. The correct comparison operator is `==`, not `=`.
+
+## 2. My Four Original Test Cases
+
+| Input | Expected Output | Reason |
+|---|---|---|
+| 4 | True | Positive even number |
+| 7 | False | Positive odd number |
+| 0 | True | Zero is even |
+| -6 | True | Negative even number |
+
+## 3. Test-Generation Prompt
+
+Act as a QA engineer.
+
+**Context:**
+
+I created a Python function that checks whether a number is even.
+
+**Code:**
+
+`def is_even(num): return num % 2 == 0`
+
+**Task:**
+
+Generate test cases for this function.
+
+**Include:**
+- Normal even numbers
+- Normal odd numbers
+- Zero
+- Negative numbers
+- Invalid input cases, such as strings and None
+
+**Format:**
+
+Use an HTML table with these columns:
+- Input
+- Expected Output
+- Reason
+
+## 4. AI-Generated Test Cases
+
+| Input | Expected Output | Reason |
+|---|---|---|
+| 2 | True | Positive even number |
+| 9 | False | Positive odd number |
+| 0 | True | Zero is even |
+| -5 | False | Negative odd number |
+| -8 | True | Negative even number |
+| 2.5 | False | Decimal number; its remainder is not zero |
+| "hello" | TypeError | A string cannot be used with the modulo operator and an integer |
+| None | TypeError | None does not support modulo with an integer |
+
+## 5. Test Results
+
+The following results are expected for the corrected function. The actual output column should be confirmed by running each test.
+
+| Input | Expected Output | Actual Output | Result |
+|---|---|---|---|
+| 4 | True | True | Pass |
+| 7 | False | False | Pass |
+| 0 | True | True | Pass |
+| -6 | True | True | Pass |
+| -5 | False | False | Pass |
+| 2.5 | False | False | Pass |
+| "hello" | TypeError | TypeError | Pass |
+| None | TypeError | TypeError | Pass |
+
+## 6. Comparison of My Tests and AI-Generated Tests
+
+My original test cases covered positive even numbers, positive odd numbers, zero, and negative even numbers.
+
+AI suggested additional test cases, including negative odd numbers, decimal numbers, strings, and None. These tests helped cover more possible situations and showed that invalid inputs can cause errors.
+
+## 7. Reflection
+
+One useful test case suggested by AI that I did not originally consider was passing a string, such as "hello", to the function. This test is useful because the function expects a number, and a string causes a TypeError. It helped me understand why developers should test invalid inputs as well as normal inputs.
+
+## 8. Conclusion
+
+Testing different types of input helps developers identify errors and understand the limitations of their functions. AI can help generate additional test cases, but developers should run the tests and verify the actual results before submitting their work.
