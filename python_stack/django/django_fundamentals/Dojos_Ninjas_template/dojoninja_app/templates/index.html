@@ -15,6 +15,9 @@
             <label for="name">Name:</label>
             <input type="text" name="name" id="name" class="form-control">
             
+            <input type="radio" value="male">
+            <input type="submit" value="female">
+            
             <label for="city">City:</label>
             <input type="text" name="city" id="city" class="form-control">
             
@@ -22,6 +25,7 @@
             <input type="text" name="state" id="state" class="form-control">
             <br>
             <input type="submit" value="Add" class="btn btn-primary">
+
     </form>
     </div>
     <div class="col-md-6">
@@ -47,6 +51,7 @@
     <br>
     <ul class="list-group list-group-flush">
         {% for dojo in dojoes %}
+        <!-- {% for dojo in sajeda %} -->
             <li class="list-group-item">{{dojo.name}}</li>
             <ul class="list-group">
                 {% for ninja in dojo.ninjaes.all %}

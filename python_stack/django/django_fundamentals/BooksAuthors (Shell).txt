@@ -1,0 +1,95 @@
+>>> Book.objects.create(title = 'C sharp', desc = 'Good')
+<Book: Book object (1)>
+>>> Book.objects.create(title = 'Java', desc = 'Bad')
+<Book: Book object (2)>
+>>> Book.objects.create(title = 'python', desc = 'Bad too')
+<Book: Book object (3)>
+>>> Book.objects.create(title = 'PHP', desc = 'Bad 3')
+<Book: Book object (4)>
+>>> Book.objects.create(title = 'Ruby', desc = 'DDD')
+<Book: Book object (5)>
+
+---------------------------------------------------------------
+
+>>> Author.objects.create(first_name = 'jane' , last_name='Austen')
+<Author: Author object (1)>
+>>> Author.objects.create(first_name = 'emily' , last_name='dickinson')
+<Author: Author object (2)>
+>>> Author.objects.create(first_name = 'fyodor' , last_name='dostoevsky')
+<Author: Author object (3)>
+>>> Author.objects.create(first_name = 'william' , last_name='shakspear')
+<Author: Author object (4)>
+>>> Author.objects.create(first_name = 'lau' , last_name='tzu')
+<Author: Author object (5)>
+
+-------------------------------------------------------------------
+
+(django_env) C:\Users\Admin\Desktop\Axsos-Assigments\python_stack\django\django_fundamentals\Books_Authers>py manage.py makemigrations
+It is impossible to add a non-nullable field 'notes' to author without specifying a default. This is because the database needs something to populate existing rows.
+Please select a fix:
+ 1) Provide a one-off default now (will be set on all existing rows with a null value for this column)
+ 2) Quit and manually define a default value in models.py.
+Select an option: 1
+Please enter the default value as valid Python.
+The datetime and django.utils.timezone modules are available, so it is possible to provide e.g. timezone.now as a value.
+Type 'exit' to exit this prompt
+>>> ""
+Migrations for 'bookauthers':
+  bookauthers\migrations\0002_author_notes.py
+    + Add field notes to author
+
+(django_env) C:\Users\Admin\Desktop\Axsos-Assigments\python_stack\django\django_fundamentals\Books_Authers>py manage.py migrate
+Operations to perform:
+  Apply all migrations: admin, auth, bookauthers, contenttypes, sessions
+Running migrations:
+  Applying bookauthers.0002_author_notes... OK
+
+-----------------------------------------------------------------------
+
+book1 = Book.objects.get(id=1)
+>>> book1.title="C#"
+>>> book1.save
+<bound method Model.save of <Book: Book object (1)>>
+>>> book1.save()
+
+-----------------------------------------------------------------------
+
+ author4 = Author.objects.get(id=4)
+>>> author4.first_name = "bill"
+>>> author4.save()
+
+------------------------------------------------------------------------
+
+>>> book2= Book.objects.get(id=2)
+>>> author1= Author.objects.get(id=1)
+>>> author1.books.add(book1, book2)
+
+
+ author2 = Author.objects.get(id=2)
+>>> book3 = Book.objects.get(id=3)
+>>>
+>>> author2.books.add(book2, book3, book1)
+
+
+>>> author3 = Author.objects.get(id=3)
+>>> book4 = Book.objects.get(id=4)
+>>> author3.books.add(book1, book2, book3, book4)
+
+>>> book5 = Book.objects.get(id=5)
+>>> author4.books.add(book1, book2, book3, book4, book5)
+
+>>> book3.authors.all()
+<QuerySet [<Author: Author object (2)>, <Author: Author object (3)>, <Author: Author object (4)>]>
+
+>>> book3.authors.remove(author1)
+
+ author5= Author.objects.get(id = 5)
+>>> author5.books.add(book2)
+
+ author3.books.all()
+<QuerySet [<Book: Book object (1)>, <Book: Book object (2)>, <Book: Book object (3)>, <Book: Book object (4)>]>
+
+>>> book5 = Book.objects.get(id=5)
+>>> book5.authors.all()
+<QuerySet [<Author: Author object (4)>]>
+>>>

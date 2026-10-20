@@ -7,6 +7,8 @@ class Dojo (models.Model):
     state = models.CharField(max_length=255)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    male = models.CharField(max_length=255)
+    female = models.CharField(max_length=255)
 
 class Ninja (models.Model):
     first_name = models.CharField(max_length=255)

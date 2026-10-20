@@ -1,0 +1,100 @@
+>>> Dojo.objects.create(name = "Moh" ,city = "Ramallah", state= "PS")
+<Dojo: Dojo object (1)>
+>>> Dojo.objects.create(name = "Bashar" ,city = "oslo", state= "NO")
+<Dojo: Dojo object (2)>
+>>> Dojo.objects.create(name = "Sajeda" ,city = "basil", state= "SA")
+<Dojo: Dojo object (3)>
+
+--------------------------------------------------------------
+
+>>> delete_dojo1 = Dojo.objects.get(id=1)
+>>> delete_dojo1.delete()
+(1, {'ninjaapp.Dojo': 1})
+>>> delete_dojo2 = Dojo.objects.get(id=2)
+>>> delete_dojo2.delete()
+(1, {'ninjaapp.Dojo': 1})
+>>> delete_dojo3 = Dojo.objects.get(id=3)
+>>> delete_dojo3.delete()
+(1, {'ninjaapp.Dojo': 1})
+
+---------------------------------------------------------------
+
+ Dojo.objects.create(name = "Moh" ,city = "Ramallah", state= "PS")
+<Dojo: Dojo object (4)>
+>>> Dojo.objects.create(name = "Bashar" ,city = "oslo", state= "NO")
+<Dojo: Dojo object (5)>
+>>> Dojo.objects.create(name = "Sajeda" ,city = "basil", state= "SA")
+<Dojo: Dojo object (6)>
+
+-----------------------------------------------------------------
+
+ dojo1 = Dojo.objects.get(id = 4)
+>>> ninja1 = Ninja.objects.create(first_name = "Sajeda" , last_name = "Salim" , dojo = dojo1)
+>>> ninja1 = Ninja.objects.create(first_name = "Bash" , last_name = "Nowwar" , dojo = dojo1)
+>>> ninja2 = Ninja.objects.create(first_name = "Moh" , last_name = "Hamdan" , dojo = dojo1)
+
+------------------------------------------------------------------
+
+>>> dojo2 = Dojo.objects.get(id = 5)
+>>> ninja1 = Ninja.objects.create(first_name = "Sajeda" , last_name = "Salim" , dojo = dojo2)
+>>> ninja2 = Ninja.objects.create(first_name = "Yos" , last_name = "Fawad" , dojo = dojo2)
+>>> ninja3 = Ninja.objects.create(first_name = "Emil" , last_name = "tobas" , dojo = dojo2)
+
+------------------------------------------------------------------
+
+ dojo3 = Dojo.objects.get(id = 6)
+>>> ninja1 = Ninja.objects.create(first_name = "Manar" , last_name = "Ismail" , dojo = dojo3)
+>>> ninja2 = Ninja.objects.create(first_name = "Shatha" , last_name = "Bast" , dojo = dojo3)
+>>> ninja3 = Ninja.objects.create(first_name = "Mohammad" , last_name = "Aker" , dojo = dojo3)
+
+--------------------------------------------------------------------
+
+>>> dojo1 = Dojo.objects.get(id = 4)
+>>> dojo1.ninja.all()
+
+<QuerySet [<Ninja: Ninja object (1)>, <Ninja: Ninja object (2)>, <Ninja: Ninja object (3)>]>
+
+-------------------------------------------------------------------
+
+>>> dojo2 = Dojo.objects.get(id = 5)
+>>> dojo2.ninja.all()
+<QuerySet [<Ninja: Ninja object (4)>, <Ninja: Ninja object (5)>, <Ninja: Ninja object (6)>]>
+
+------------------------------------------------------------------
+
+>>> dojo3 = Dojo.objects.get(id = 6)
+>>> dojo3.ninja.all()
+<QuerySet [<Ninja: Ninja object (7)>, <Ninja: Ninja object (8)>, <Ninja: Ninja object (9)>]>
+
+------------------------------------------------------------------
+>>> ninja9 = Ninja.objects.get(id =9)
+>>> ninja9.dojo
+<Dojo: Dojo object (6)>
+
+-------------------------------------------------------------------
+
+(django_env) C:\Users\Admin\Desktop\Axsos Academy\Django\Django Projects\Dojo_Ninjas>python manage.py makemigrations
+It is impossible to add a non-nullable field 'desc' to dojo without specifying a default. This is because the database needs something to populate existing rows.
+Please select a fix:
+ 1) Provide a one-off default now (will be set on all existing rows with a null value for this column)
+ 2) Quit and manually define a default value in models.py.
+Select an option: 1
+Please enter the default value as valid Python.
+The datetime and django.utils.timezone modules are available, so it is possible to provide e.g. timezone.now as a value.
+Type 'exit' to exit this prompt
+>>> "old dojo"
+Migrations for 'ninjaapp':
+  ninjaapp\migrations\0002_dojo_desc.py
+    + Add field desc to dojo
+
+(django_env) C:\Users\Admin\Desktop\Axsos Academy\Django\Django Projects\Dojo_Ninjas>python manage.py migrate
+Operations to perform:
+  Apply all migrations: admin, auth, contenttypes, ninjaapp, sessions
+Running migrations:
+  Applying ninjaapp.0002_dojo_desc... OK
+
+------------------------------------------------------------------------
+
+>>> Dojo.objects.create(name = "Emil" , city = "Nablus"
+... , state ="US" , desc ="good")
+<Dojo: Dojo object (7)>

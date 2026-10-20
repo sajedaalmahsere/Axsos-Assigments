@@ -13,6 +13,7 @@ def create_dojo(request):
         name = request.POST['name']
         city = request.POST['city']
         state = request.POST['state']
+        request.session['state'] = state
         Dojo.objects.create(name = name,city =city, state=state)
         return redirect ('/')
     return redirect ('/')
@@ -31,5 +32,6 @@ def list(request):
     dojoes = Dojo.objects.all()
     context = {
         'dojoes': dojoes
+        # 'sajeda'
     }
     return render(request, 'index.html', context)
