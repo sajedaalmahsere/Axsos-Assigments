@@ -1,0 +1,117 @@
+-to retrieve all:
+User.objects.all()
+
+- retrieve active & email:
+User.objects.filter(is_active = True, email__contains = '@mailoffice.test')
+
+- starts with the letter 'A':
+User.objetcs.filter(last_name__startswith = "A")
+
+- without 'Gaza':
+User.objects.exclude(city = 'Gaza')
+
+- retrieve mail_items of the user:
+the_user.mail_items.all()
+
+- retrieving users that belong to 'Business Update':
+MailingList.users.filter(name = 'Business Update')
+
+- user with birthdays today:
+User.objects.filter(birth_date__month=today,month, birth_date__day=today.day)
+
+- user who do not have any related mailterm objects:
+User.mail_items.filter(recipient = None)
+**after the discussion with AI --> User.objects.filter(mail_item__isnull = True)
+
+- users with more than 3 mail items:
+
+User.mail_items.filter(tracking_number__gt=3)
+** after we use 'annotate()' to count the mail items --> 
+User.objects.annotate(mail_count=Count('mail_item')).filter(mail_count__gt=3)
+
+
+---------------------------------------------------------------------------------------------
+
+prompt: 
+
+act as my python/django instructor, and explain whatever i ask you in simple terms and without over explaining, be direct and strait to the point
+1- how to use ORM through a querie that gets all the users with their birthdays today?
+2- i have a table called mailitem that has a foreign key connected to users with the related name "mail_item", how do i retrieve the users who do not have any mail_item
+3- Find Users with more than three mail items.
+
+Response: 
+
+Got you bro! I'll keep it simple and straight to the point.
+
+## 1. Users whose birthday is today
+
+Use `filter()` with Django's `birthday__month` and `birthday__day` lookups.
+
+Python
+
+```
+from datetime import date
+
+today = date.today()
+
+users = User.objects.filter(
+    birthday__month=today.month,
+    birthday__day=today.day
+)
+```
+
+How it works:
+
+* `birthday__month` matches the current month.
+
+* `birthday__day` matches today's day.
+
+* Both conditions must match.
+
+## 2. Users who have no mail items
+
+Use `filter()` with `isnull=True` on the related name.
+
+Python
+
+```
+users = User.objects.filter(mail_item__isnull=True)
+```
+
+How it works:
+
+* `mail_item` is your `related_name`.
+
+* `__isnull=True` finds users with no related mail items.
+
+## 3. Users with more than three mail items
+
+Use `annotate()` to count each user's mail items, then `filter()` using that count.
+
+Python
+
+```
+from django.db.models import Count
+
+users = User.objects.annotate(
+    mail_count=Count('mail_item')
+).filter(mail_count__gt=3)
+```
+
+How it works:
+
+* `annotate()` adds a calculated count to each user.
+
+* `Count('mail_item')` counts their mail items.
+
+* `mail_count__gt=3` keeps users with more than 3 mail items.
+
+### Quick recap
+
+| ORM method      | Purpose                               |
+| --------------- | ------------------------------------- |
+| `filter()`      | Select records matching conditions    |
+| `annotate()`    | Add a calculated value to each record |
+| `Count()`       | Count related objects                 |
+| `__isnull=True` | Find missing relationships            |
+| `__gt=3`        | Greater than 3                        |

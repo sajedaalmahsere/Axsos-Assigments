@@ -35,3 +35,6 @@ def list(request):
         # 'sajeda'
     }
     return render(request, 'index.html', context)
+
+def hello(request):
+    return render(request, 'hello.html')

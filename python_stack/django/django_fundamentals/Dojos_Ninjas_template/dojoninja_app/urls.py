@@ -5,5 +5,6 @@ urlpatterns = [
     path('',views.index),
     path('dojo/',views.create_dojo),
     path('ninja/',views.create_ninja),
+    path('hello/', views.hello),
     
 ]
