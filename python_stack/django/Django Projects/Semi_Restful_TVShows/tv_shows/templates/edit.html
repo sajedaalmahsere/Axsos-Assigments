@@ -29,5 +29,10 @@
         <input type="submit" value="Update">
     </form>
     <a href="/show/{{movie.id}}/">Go to Show</a>
+    {% if messages %}
+    {% for message in messages %}
+        <p>{{ message }}</p>
+    {% endfor %}
+{% endif %}
 </body>
 </html>

@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Show
+from django.contrib import messages
 
 # Create your views here.
 # def index(request):
@@ -14,17 +15,23 @@ def all_shows(request):
 
 def add_show(request):
     if request.method == 'POST':
-        title = request.POST ['title']
-        network = request.POST ['network']
-        release_date = request.POST ['release_date']
-        description = request.POST ['description']
-        show = Show.objects.create(
-            title = title,
-            network = network, 
-            release_date = release_date, 
-            description = description
-            )
-        return redirect(f'/show/{show.id}/')
+        errors = Show.objects.basic_validator(request.POST)
+        if len(errors) > 0:
+            for key,value in errors.items():
+                messages.error(request, value)
+            return redirect('/add_show/')
+        else:
+            title = request.POST ['title']
+            network = request.POST ['network']
+            release_date = request.POST ['release_date']
+            description = request.POST ['description']
+            show = Show.objects.create(
+                title = title,
+                network = network, 
+                release_date = release_date, 
+                description = description
+                )
+            return redirect(f'/show/{show.id}/')
     return render(request, 'add_show.html')
 
 def show(request, id):
@@ -41,12 +48,18 @@ def edit(request, id):
     movie = Show.objects.get(id = id)
     
     if request.method == 'POST':
-        movie.title = request.POST['title']
-        movie.network = request.POST['network']
-        movie.release_date = request.POST['release_date']
-        movie.description = request.POST['description']
-        movie.save()
-        return redirect(f'/show/{movie.id}/')
+        errors = Show.objects.basic_validator(request.POST)
+        if len(errors) > 0:
+            for key,value in errors.items():
+                messages.error(request, value)
+            return redirect(f'/edit/{movie.id}/')
+        else:
+            movie.title = request.POST['title']
+            movie.network = request.POST['network']
+            movie.release_date = request.POST['release_date']
+            movie.description = request.POST['description']
+            movie.save()
+            return redirect(f'/show/{movie.id}/')
     return render(request, 'edit.html', {'movie': movie})
 
 def delete (request, id):
