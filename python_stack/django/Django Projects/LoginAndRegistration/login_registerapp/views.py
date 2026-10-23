@@ -1,5 +1,57 @@
-from django.shortcuts import render
-
+from django.shortcuts import render , redirect
+from .models import Register
+from django.contrib import messages
+import bcrypt
 # Create your views here.
 def index(request):
-    return 
+    return render(request, 'reg_log.html')
+
+def register(request):
+    if request.method == 'POST':
+        errors = Register.objects.basic_validator(request.POST)
+        if errors:
+            for key in errors:
+                messages.error(request,errors[key])
+            return redirect('/')
+        
+        first_name = request.POST['first_name']
+        last_name = request.POST['last_name']
+        email = request.POST['email']
+        birthday = request.POST['birthday']
+        password = request.POST['password']
+        hashed_password = bcrypt.hashpw(password.encode(), bcrypt.gensalt()).decode()
+        user = Register.objects.create(
+            first_name = first_name,
+            last_name = last_name,
+            email = email,
+            birthday = birthday,
+            password = hashed_password,
+        )
+        request.session['user_id'] = user.id
+        request.session['user_first_name']= user.first_name
+        return redirect('/home/')
+    return render(request, 'reg_log.html')
+
+def login(request):
+    if request.method == 'POST':
+        try:
+            user = Register.objects.get(email=request.POST['email'])
+            if user:
+                if bcrypt.checkpw(request.POST['password'].encode(), user.password.encode()):
+                    request.session['user_id'] = user.id
+                    request.session['user_first_name']= user.first_name
+                    return redirect('/home/')
+        except:
+            messages.error(request, f"The email {request.POST['email']} does not exist")
+            return redirect('/')
+        return redirect('/')
+    return render(request, 'reg_log.html')
+
+def home(request):
+    if 'user_id' not in request.session:
+        return redirect('/')
+    return render(request, 'home.html')
+
+def logout(request):
+    request.session.flush()
+    return redirect('/')
