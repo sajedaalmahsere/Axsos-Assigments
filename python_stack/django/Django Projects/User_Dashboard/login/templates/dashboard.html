@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard</title>
+</head>
+<body>
+    <h1>Admin Dashboard</h1>
+    <p>Hello, {{ request.session.user_first_name }}</p>
+    <a href="/logout/">Log off</a>
+    <hr>
+    <h2>Manage Users</h2>
+    <a href="/register/">Add New User</a>
+    <br><br>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Full Name</th>
+                <th>Email</th>
+                <th>Registered At</th>
+                <th>Level</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+                <tr>
+                    <td>{{ user.id }}</td>
+                    <td>{{ user.first_name }} {{ user.last_name }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.created_at }}</td>
+                    <td>
+                        {% if user.user_level == 9 %}
+                            Admin
+                        {% else %}
+                            Normal User
+                        {% endif %}
+                    </td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="5">No users found.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <p>Total users: {{ users|length }}</p>
+</body>
+</html>
