@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" 
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+    <title>TV Shows</title>
+</head>
+<body>
+    <h1>Edit Show</h1>
+    <h1>Edit Show {{ movie.id }}</h1>
+    <form action="/shows/edit/{{ movie.id }}/" method="post" class="card card-body">
+        {% csrf_token %}
+        <div>
+            <label for="title">Title</label>
+            <input type="text" name="title" id="title"
+                value="{{ movie.title }}"  class="form-control">
+        </div>
+        <br>
+        <div>
+            <label for="network">Network</label>
+            <input type="text" name="network" id="network" value="{{ movie.network }}"  class="form-control">
+
+            <label for="release_date">Release Date</label>
+            <input type="date" name="release_date" id="release_date" value="{{ movie.release_date|date:'Y-m-d' }}"  class="form-control">
+        </div>
+        <br>
+        <div>
+            <label for="comments">Comments:</label>
+            <textarea name="comments" id="comments"  class="form-control">{{ movie.comments }}</textarea>
+        </div>
+        <br>
+        <input type="submit" value="Update" class="btn btn-primary">
+    </form>
+    {% if messages %}
+        {% for message in messages %}
+            <p>{{ message }}</p>
+        {% endfor %}
+    {% endif %}
+</body>
+</html>

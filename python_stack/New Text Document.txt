@@ -1,0 +1,51 @@
+Microsoft Windows [Version 10.0.26200.8893]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\Admin>cd Desktop
+
+C:\Users\Admin\Desktop>git clone https://github.com/Toubassi/rental_website.git
+Cloning into 'rental_website'...
+remote: Enumerating objects: 64, done.
+remote: Counting objects: 100% (64/64), done.
+remote: Compressing objects: 100% (46/46), done.
+remote: Total 64 (delta 13), reused 58 (delta 13), pack-reused 0 (from 0)
+Receiving objects: 100% (64/64), 17.48 KiB | 1.46 MiB/s, done.
+Resolving deltas: 100% (13/13), done.
+
+C:\Users\Admin\Desktop>cd rental_website
+
+C:\Users\Admin\Desktop\rental_website>code .
+
+C:\Users\Admin\Desktop\rental_website>git pull origin master
+From https://github.com/Toubassi/rental_website
+ * branch            master     -> FETCH_HEAD
+Already up to date.
+
+C:\Users\Admin\Desktop\rental_website>git checkout -b "Design"
+Switched to a new branch 'Design'
+
+C:\Users\Admin\Desktop\rental_website>git push origin Design
+Total 0 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+remote:
+remote: Create a pull request for 'Design' on GitHub by visiting:
+remote:      https://github.com/Toubassi/rental_website/pull/new/Design
+remote:
+To https://github.com/Toubassi/rental_website.git
+ * [new branch]      Design -> Design
+
+C:\Users\Admin\Desktop\rental_website>git add .
+
+C:\Users\Admin\Desktop\rental_website>git commite -m "Design"
+git: 'commite' is not a git command. See 'git --help'.
+
+The most similar command is
+        commit
+
+C:\Users\Admin\Desktop\rental_website>git commit -m "Design"
+[Design 995e3c2] Design
+ 1 file changed, 1 insertion(+)
+
+C:\Users\Admin\Desktop\rental_website>git push origin master
+Everything up-to-date
+
+C:\Users\Admin\Desktop\rental_website>
