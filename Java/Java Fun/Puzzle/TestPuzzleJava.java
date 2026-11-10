@@ -15,6 +15,8 @@ public class TestPuzzleJava {
         System.out.println(generator.getRandomLetter());
         System.out.println(generator.generatePass());
         System.out.println(generator.getNewPass(7));
+        System.out.println("-----------------------------------------------------");
+        System.out.println(generator.generatePass());
         
     }
 }

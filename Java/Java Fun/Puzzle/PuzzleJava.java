@@ -11,10 +11,10 @@ public class PuzzleJava {
             return randomRolls;
         }
 
-        public String getRandomLetter(){
+        public char getRandomLetter(){
             char[] alphabets = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
             int result = randMachine.nextInt(alphabets.length);
-            return String.valueOf(alphabets[result]);  
+            return (alphabets[result]);  
         }
         
         public String generatePass(){
@@ -24,7 +24,16 @@ public class PuzzleJava {
             }
             return randomPass;
         }
-
+        
+            public int generatePass(int length) {
+                int randomPass = ; //empty string add 
+                
+                for (int i = 0; i < 8; i++) {
+                    randomPass += randMachine.nextInt(21);
+                }
+                return randomPass;
+            }
+        
         public ArrayList<String> getNewPass(int length){
             // get (length) random words
             ArrayList<String> randWords = new ArrayList<String>();
