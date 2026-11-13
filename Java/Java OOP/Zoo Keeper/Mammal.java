@@ -5,7 +5,7 @@ public class Mammal {
         this.energy = energy;
     }
 
-    public void displayEnergy(){
-        
+    public int displayEnergy(){
+        return energy;
     }
 }
