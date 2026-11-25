@@ -1,0 +1,497 @@
+**Role:**\
+Act as a Senior Java Spring Boot Developer and Code Reviewer who is experienced in teaching beginner developers.
+
+
+
+**Context:**\
+I'm building a FitQuest application using Java, Spring Boot, and HttpSession. Users can complete fitness activities (walking, yoga, weightlifting, and daily challenges) to earn points. The application stores the user's points and activity history in the session. Each activity is recorded with a timestamp, and the newest activity appears first.
+
+
+
+**Format:**\
+Review my code and provide a numbered list of areas that need improvement. For each issue:
+
+- Identify the relevant method or code section.
+- Explain why it might be a problem.
+- Give me a hint about how to improve it.
+- Ask me a guiding question to help me find the solution.
+
+Do not provide corrected code or rewrite my controller.
+
+
+
+**Task:**\
+Review my FitQuest controller for potential bugs, Java best practices, Spring Boot practices, session handling, input validation, and code readability. Identify areas I should improve, but let me implement the fixes myself.
+
+
+
+Here is my code:
+
+
+
+package com.fitquest.controllers;\
+\
+import java.text.SimpleDateFormat;\
+import java.util.ArrayList;\
+import java.util.Date;\
+import java.util.Random;\
+\
+import org.springframework.stereotype.Controller;\
+import org.springframework.web.bind.annotation.GetMapping;\
+import org.springframework.web.bind.annotation.PostMapping;\
+import org.springframework.web.bind.annotation.RequestParam;\
+\
+import jakarta.servlet.http.HttpSession;\
+\
+@Controller\
+public class FitQuestController {\
+\
+&#x9;// Shows the dashboard with the current points and the activity log\
+&#x9;@GetMapping("/")\
+&#x9;public String index(HttpSession session) {\
+&#x9;	if (session.getAttribute("points") == null) {\
+&#x9;	    session.setAttribute("points", 0);\
+&#x9;	}\
+\
+&#x9;	if (session.getAttribute("log") == null) {\
+&#x9;	    session.setAttribute("log", new ArrayList\<String>());\
+&#x9;	}\
+&#x9;	\
+&#x9;	\
+&#x9;	return "index";\
+&#x9;}\
+\
+&#x9;// Handles all four activity forms\
+&#x9;@PostMapping("/process")\
+&#x9;public String process(@RequestParam("activity") String activity, HttpSession session) {\
+&#x9;	Random random = new Random();\
+&#x9;	int points = (int) session.getAttribute("points");\
+&#x9;	@SuppressWarnings("unchecked")\
+&#x9;	ArrayList\<String> log = (ArrayList\<String>) session.getAttribute("log");\
+&#x9;	String time = new SimpleDateFormat("MMMM d, yyyy h:mm a").format(new Date());\
+\
+&#x9;	int earned = 0;\
+&#x9;	String place = "";\
+\
+&#x9;	if (activity.equals("walk") ) {\
+&#x9;		earned = random.nextInt(6) + 5;\
+&#x9;		place = "went for a walk";\
+&#x9;	} else if (activity.equals("yoga")) {\
+&#x9;		earned = random.nextInt(11) + 10;\
+&#x9;		place = "finished a yoga class";\
+&#x9;	} else if (activity.equals("weights")) {\
+&#x9;		earned = random.nextInt(16) + 15;\
+&#x9;		place = "lifted weights at the gym";\
+&#x9;	} else if (activity.equals("challenge")) {\
+&#x9;		earned = random.nextInt(51);\
+&#x9;		place = "took on the daily challenge";\
+&#x9;	}\
+\
+&#x9;	points += earned;\
+\
+&#x9;	if (earned >= 0) {\
+&#x9;		log.add(0, "You " + place + " and earned " + earned + " points. (" + time + ")");\
+&#x9;	} else {\
+&#x9;		log.add(0, "You " + place + " and lost " + Math.abs(earned) + " points. Ouch! (" + time + ")");\
+&#x9;	}\
+\
+&#x9;	session.setAttribute("points", points);\
+&#x9;	session.setAttribute("log", log);\
+&#x9;	return "redirect:/";\
+&#x9;}\
+}\
+
+-----------------------------------------------------------------------------
+
+
+# **FitQuest Controller – Code Review**
+
+Your controller has a good structure for a beginner Spring Boot project. You've separated the dashboard (`index`) from processing activities (`process`), and you're using `HttpSession` to maintain user data between requests.
+
+However, there are several areas worth investigating. I'll guide you toward the problems without giving you corrected code.
+
+## **1. Session initialization and duplicated logic**
+
+**Relevant method:** `index()`
+
+```
+if (session.getAttribute("points") == null) {
+    session.setAttribute("points", 0);
+}
+
+if (session.getAttribute("log") == null) {
+    session.setAttribute("log", new ArrayList<String>());
+}
+```
+
+**Why might this be a problem?**
+
+You're initializing the session attributes inside `index()`, but your `process()` method assumes these attributes already exist.
+
+What happens if someone sends a POST request to `/process` before visiting the dashboard?
+
+**Hint:** Think about where session initialization should happen so that every method that needs these attributes can safely access them.
+
+**Guiding question:**
+
+Can you guarantee that `points` and `log` will always exist before `process()` tries to retrieve them?
+
+## **2. Input validation – Unknown activities**
+
+**Relevant method:** `process()`
+
+```
+if (activity.equals("walk")) {
+    earned = random.nextInt(6) + 5;
+} else if (activity.equals("yoga")) {
+    earned = random.nextInt(11) + 10;
+} else if (activity.equals("weights")) {
+    earned = random.nextInt(16) + 15;
+} else if (activity.equals("challenge")) {
+    earned = random.nextInt(51);
+}
+```
+
+**Why might this be a problem?**
+
+What happens if someone submits:
+
+- `activity=swimming`
+- `activity=running`
+- `activity=anything`
+
+None of your conditions will match.
+
+Java will keep the initial values:
+
+```
+int earned = 0;
+String place = "";
+```
+
+The application will still update the session and add an activity to the log.
+
+**Hint:** Consider how you can distinguish between valid and invalid activity values.
+
+**Guiding question:**
+
+Should an unknown activity be recorded as an activity that earned zero points?
+
+## **3. Random object creation**
+
+**Relevant method:** `process()`
+
+```
+Random random = new Random();
+```
+
+**Why might this be a problem?**
+
+Every time someone submits an activity, you create a new `Random` object.
+
+This is unnecessary object creation. Consider whether you need a new random number generator for every request.
+
+**Hint:** Think about Java object lifecycle and whether `Random` needs to be created repeatedly.
+
+**Guiding question:**
+
+Could you reuse one `Random` instance instead of creating a new one every time `process()` runs?
+
+## **4. Session attribute casting**
+
+**Relevant method:** `process()`
+
+```
+int points = (int) session.getAttribute("points");
+```
+
+**Why might this be a problem?**
+
+`session.getAttribute()` returns an `Object`, not an `int`.
+
+You're assuming that the stored value is always an `Integer`.
+
+If the attribute is missing or contains an unexpected type, you could encounter a runtime exception.
+
+**Hint:** Investigate how Java handles casting and unboxing, especially when working with objects retrieved from a session.
+
+**Guiding question:**
+
+What happens when you try to convert `null` from an `Object` into an `int`?
+
+## **5. Using ArrayList directly for the activity log**
+
+**Relevant method:** `index()` and `process()`
+
+```
+new ArrayList<String>()
+```
+
+```
+ArrayList<String> log =
+    (ArrayList<String>) session.getAttribute("log");
+```
+
+**Why might this be a problem?**
+
+You're using the concrete implementation `ArrayList` as your variable type.
+
+In Java, it's generally preferable to program against an interface when possible.
+
+**Hint:** Review the difference between `List` and `ArrayList`.
+
+**Guiding question:**
+
+If you wanted to change your collection implementation later, which type would make your code more flexible?
+
+## **6. Timestamp formatting**
+
+**Relevant method:** `process()`
+
+```
+String time = new SimpleDateFormat("MMMM d, yyyy h:mm a")
+                  .format(new Date());
+```
+
+**Why might this be a problem?**
+
+You're using `SimpleDateFormat` and `Date`, which belong to Java's older date/time API.
+
+Modern Java provides the `java.time` package, which offers better date and time handling.
+
+Also, consider what happens if multiple users are using the application simultaneously.
+
+**Hint:** Explore these classes:
+
+- `LocalDateTime`
+- `LocalDate`
+- `DateTimeFormatter`
+
+**Guiding question:**
+
+Which modern Java class would you use to represent the exact date and time when an activity occurs?
+
+## **7. Activity log ordering**
+
+**Relevant method:** `process()`
+
+```
+log.add(0, "You " + place + " and earned " + earned
+        + " points. (" + time + ")");
+```
+
+**Why might this be a problem?**
+
+Your implementation correctly puts the newest activity first.
+
+However, consider what happens when the user completes hundreds or thousands of activities.
+
+Adding an element at index `0` in an `ArrayList` requires shifting the existing elements.
+
+**Hint:** Think about the difference between adding elements at the beginning and end of a collection.
+
+**Guiding question:**
+
+Is `ArrayList` the most suitable collection if your primary operation is inserting new elements at the beginning?
+
+## **8. Conditional logic for earned points**
+
+**Relevant method:** `process()`
+
+```
+if (earned >= 0) {
+    log.add(0, "You " + place + " and earned " + earned + " points.");
+} else {
+    log.add(0, "You " + place + " and lost " + Math.abs(earned) + " points.");
+}
+```
+
+**Why might this be a problem?**
+
+Look carefully at your random number generation.
+
+All four activities currently generate non-negative numbers.
+
+For example:
+
+```
+random.nextInt(51);
+```
+
+This generates values from 0 to 50.
+
+Therefore, your `else` branch is currently unreachable.
+
+**Hint:** Compare the possible values of `earned` with the condition `earned >= 0`.
+
+**Guiding question:**
+
+Can your current application ever generate a negative value for `earned`?
+
+## **9. Null safety when comparing strings**
+
+**Relevant method:** `process()`
+
+```
+if (activity.equals("walk"))
+```
+
+**Why might this be a problem?**
+
+You're calling `.equals()` on the variable `activity`.
+
+If `activity` is `null`, this can cause a `NullPointerException`.
+
+**Hint:** Think about which object should be responsible for performing the string comparison.
+
+**Guiding question:**
+
+What happens if the client submits a request without providing an activity value?
+
+## **10. Controller responsibility and readability**
+
+**Relevant method:** `process()`
+
+Your controller currently handles several responsibilities:
+
+1. Retrieving session data.
+2. Generating random points.
+3. Determining activity descriptions.
+4. Calculating total points.
+5. Formatting timestamps.
+6. Building activity log messages.
+7. Updating session attributes.
+
+**Why might this be a problem?**
+
+As your application grows, your controller could become difficult to maintain and test.
+
+Spring Boot applications generally benefit from separating business logic from request-handling logic.
+
+**Hint:** Learn about the Service layer and how a controller communicates with a service.
+
+**Guiding question:**
+
+If you later add 15 different fitness activities, would you want all their business logic inside one controller method?
+
+## **11. Session data growth**
+
+**Relevant method:** `process()`
+
+```
+log.add(0, "You " + place + " and earned " + earned
+        + " points. (" + time + ")");
+```
+
+**Why might this be a problem?**
+
+You're storing the entire activity history inside the HTTP session.
+
+As users complete more activities, the session continues growing.
+
+This can become a memory-management problem, especially when many users use the application.
+
+**Hint:** Consider whether you need to keep every activity forever or whether you could limit the history displayed on the dashboard.
+
+**Guiding question:**
+
+Does your dashboard really need to display 10,000 previous activities?
+
+## **12. Points calculation and business rules**
+
+**Relevant method:** `process()`
+
+```
+points += earned;
+```
+
+**Why might this be a problem?**
+
+You're adding points without checking whether the resulting total is valid.
+
+For example:
+
+- What if points eventually exceed the maximum value of an `int`?
+- Should points ever become negative?
+- Should there be a maximum daily earning limit?
+
+These are business-rule questions rather than just Java syntax issues.
+
+**Hint:** Think about the rules that should govern a user's points balance.
+
+**Guiding question:**
+
+What conditions should be satisfied before updating the user's total points?
+
+# **Your debugging practice**
+
+I recommend fixing these issues one at a time instead of changing everything simultaneously.
+
+**Code review checklist**
+
+0/12 completed
+
+**1. Session initialization**
+
+Can process() safely access session attributes?
+
+**2. Invalid activity validation**
+
+What happens with an unknown activity?
+
+**3. Random object lifecycle**
+
+Can Random be reused?
+
+**4. Session casting**
+
+What if a session attribute is null?
+
+**5. List vs ArrayList**
+
+Which collection type is more flexible?
+
+**6. Modern date/time API**
+
+Can you use java.time?
+
+**7. Activity log performance**
+
+What is the cost of inserting at index 0?
+
+**8. Unreachable else branch**
+
+Can earned ever be negative?
+
+**9. Null-safe comparison**
+
+What if activity is null?
+
+**10. Service layer**
+
+Should business logic live in the controller?
+
+**11. Session memory**
+
+Should activity history have a limit?
+
+**12. Points validation**
+
+Are your points business rules protected?
+
+## **My recommendation**
+
+Start with issues **1, 2, 4, 8, and 9**. These are especially important because they can cause runtime errors or incorrect application behavior.
+
+Then work on the Java best practices and application structure.
+
+**One important rule:** Don't try to fix all 12 issues at once. Fix one, run your application, test it, and then move to the next.
+
+When you encounter a bug, use this RCTF debugging prompt to ask AI for guidance rather than asking it to solve the problem:
+
+- **R – Role:** Act as a senior Java Spring Boot developer and beginner-friendly instructor.
+- **C – Context:** Explain what your application should do and what is currently happening.
+- **T – Task:** Ask for hints to identify the root cause, without providing corrected code.
+- **F – Format:** Ask for guiding questions, debugging steps, and one hint at a time.
+
+You should be the one writing the fixes. That's how you'll build real debugging skills.

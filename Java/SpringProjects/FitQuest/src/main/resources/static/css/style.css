@@ -1,0 +1,45 @@
+body {
+	font-family: Arial, sans-serif;
+	margin: 30px;
+	background-color: #f4f8f6;
+}
+
+.activities {
+	display: flex;
+	gap: 20px;
+	flex-wrap: wrap;
+}
+
+.card {
+	border: 2px solid #2e8b57;
+	border-radius: 8px;
+	padding: 15px;
+	width: 200px;
+	text-align: center;
+	background-color: white;
+}
+
+button {
+	background-color: #2e8b57;
+	color: white;
+	border: none;
+	padding: 8px 12px;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+.log {
+	border: 1px solid #999;
+	height: 200px;
+	overflow-y: scroll;
+	padding: 10px;
+	background-color: white;
+}
+
+.earned {
+	color: green;
+}
+
+.lost {
+	color: red;
+}
